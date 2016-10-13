@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DrugsSystem.Models
 {
-    public class DrugUnit
+    public class DrugUnit: BaseEntity
     {
         [Key]
         public string DrugUnitID { get; set; }

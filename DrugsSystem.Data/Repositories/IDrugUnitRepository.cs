@@ -9,7 +9,7 @@ using DrugsSystem.Models;
 
 namespace DrugsSystem.Data.Repositories
 {
-    interface IDrugUnitRepository : IRepository<DrugUnit>
+    public interface IDrugUnitRepository : IRepository<DrugUnit>
     {
 
     }

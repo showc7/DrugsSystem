@@ -5,13 +5,19 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using DrugsSystem.Models;
 
 namespace DrugsSystem.Data.Infrastructure
 {
-    public class RepositoryBase<T> where T : class
+    public class BaseRepository<T> where T : BaseEntity
     {
+        #region Fields
         private StoreEntities _dataContext;
         private readonly IDbSet<T> _dbSet;
+        #endregion
+
+        #region Properties
+
         protected IDbFactory DbFactory { get; private set; }
         protected StoreEntities DbContext
         {
@@ -21,7 +27,9 @@ namespace DrugsSystem.Data.Infrastructure
             }
         }
 
-        protected RepositoryBase(IDbFactory dbFactory)
+        #endregion
+
+        protected BaseRepository(IDbFactory dbFactory)
         {
             DbFactory = dbFactory;
             _dbSet = DbContext.Set<T>();

@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace DrugsSystem.Data.Infrastructure
 {
-    // why not to add Create method?
     public interface IRepository<T> where T : class
     {
         void Add(T entity);
