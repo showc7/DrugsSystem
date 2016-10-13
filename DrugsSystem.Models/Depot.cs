@@ -13,7 +13,7 @@ namespace DrugsSystem.Models
         [Key]
         public int DepotID { get; set; }
         public string DepotName { get; set; }
-        public virtual List<DrugUnit> Drugunits { get; set; }
+        public virtual List<DrugUnit> DrugUnits { get; set; }
         public virtual List<Country> Countries { get; set; }
     }
 }
