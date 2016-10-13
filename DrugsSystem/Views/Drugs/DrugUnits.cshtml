@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "DrugUnits";
+}
+
+<h2>DrugUnits</h2>
+
+@Html.ActionLink("Create New","Create","Drugs");
+
+@foreach (var v in ViewBag.Units)
+{
+    <li>
+        @v
+        <a href=@Url.Content("/Drugs/Edit/" + v.DrugUnitID)>Edit</a>
+    </li>
+}

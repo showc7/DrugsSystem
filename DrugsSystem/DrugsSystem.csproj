@@ -77,6 +77,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.3.9\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -196,12 +200,24 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CountryController.cs" />
+    <Compile Include="Controllers\DepotController.cs" />
+    <Compile Include="Controllers\DrugsController.cs" />
+    <Compile Include="Controllers\DrugTypeController.cs" />
+    <Compile Include="Controllers\DrugUnitController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="DAL\DrugsContext.cs" />
+    <Compile Include="DAL\Initializers\DrugsSystemInitializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Database\Country.cs" />
+    <Compile Include="Models\Database\Depot.cs" />
+    <Compile Include="Models\Database\DrugType.cs" />
+    <Compile Include="Models\Database\DrugUnit.cs" />
+    <Compile Include="Models\Drugs\EditViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -267,10 +283,25 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Home\Drugs.cshtml" />
+    <Content Include="Views\Drugs\Drugs.cshtml" />
+    <Content Include="Views\Drugs\Index.cshtml" />
+    <Content Include="Views\Drugs\DrugUnits.cshtml" />
+    <Content Include="Views\Drugs\DrugUnitsCreate.cshtml" />
+    <Content Include="Views\Drugs\DrugUnitsEdit.cshtml" />
+    <Content Include="Views\Drugs\View.cshtml" />
+    <Content Include="Views\Drugs\Details.cshtml" />
+    <Content Include="Views\DrugType\List.cshtml" />
+    <Content Include="Views\DrugType\Create.cshtml" />
+    <Content Include="Views\DrugType\Delete.cshtml" />
+    <Content Include="Views\DrugType\Edit.cshtml" />
+    <Content Include="Views\DrugUnit\List.cshtml" />
+    <Content Include="Views\DrugUnit\Details.cshtml" />
+    <Content Include="Views\DrugType\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Country\" />
+    <Folder Include="Views\Depot\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

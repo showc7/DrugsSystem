@@ -26,12 +26,5 @@ namespace DrugsSystem.Controllers
 
             return View();
         }
-
-        public ActionResult Drugs()
-        {
-            ViewBag.Message = "Drugs page";
-
-            return View();
-        }
     }
 }
