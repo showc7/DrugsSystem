@@ -60,7 +60,7 @@ namespace DrugsSystem.Data.Infrastructure
             }
         }
 
-        IDrugUnitRepository IUnitOfWork.DrugUnitrepository
+        IDrugUnitRepository IUnitOfWork.DrugUnitRepository
         {
             get
             {

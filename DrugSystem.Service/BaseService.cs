@@ -9,13 +9,13 @@ using DrugsSystem.Data.Infrastructure;
 
 namespace DrugSystem.Service
 {
-    public class DrugTypeService : BaseService, IDrugTypeService
+    public class BaseService
     {
-        private IDrugTypeRepository _drugTypeRepository;
+        protected IUnitOfWork _unitOfWork;
 
-        public DrugTypeService(DbFactory dbFactory) : base(dbFactory)
+        public BaseService(IDbFactory dbFactory)
         {
-            _drugTypeRepository = _unitOfWork.DrugTypeRepository;
+            _unitOfWork = new UnitOfWork(dbFactory);
         }
     }
 }

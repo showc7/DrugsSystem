@@ -13,7 +13,7 @@ namespace DrugsSystem.Data.Infrastructure
         ICountryRepository CountryRepository { get; }
         IDepotRepository DepotRepository { get; }
         IDrugTypeRepository DrugTypeRepository { get; }
-        IDrugUnitRepository DrugUnitrepository { get; }
+        IDrugUnitRepository DrugUnitRepository { get; }
         void Commit();
     }
 }

@@ -15,5 +15,15 @@ namespace DrugsSystem.Data.Repositories
         {
 
         }
+
+        public IEnumerable<Country> GetAssociatedCountires(int DepotID)
+        {
+            return this.DbContext.Depots.Where(x => x.DepotID == DepotID).FirstOrDefault().Countries.AsEnumerable();
+        }
+
+        public IEnumerable<DrugUnit> GetAssociatedDrugUnits(int DepotID)
+        {
+            return this.DbContext.Depots.Where(x => x.DepotID == DepotID).FirstOrDefault().DrugUnits.AsEnumerable();
+        }
     }
 }

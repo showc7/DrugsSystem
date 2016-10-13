@@ -15,10 +15,5 @@ namespace DrugsSystem.Data.Repositories
         {
 
         }
-
-        public interface ICountryRepositury : IRepository<Country>
-        {
-
-        }
     }
 }

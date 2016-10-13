@@ -11,6 +11,7 @@ namespace DrugsSystem.Data.Repositories
 {
     public interface IDepotRepository : IRepository<Depot>
     {
-
+        IEnumerable<Country> GetAssociatedCountires(int DepotID);
+        IEnumerable<DrugUnit> GetAssociatedDrugUnits(int DepotID);
     }
 }
