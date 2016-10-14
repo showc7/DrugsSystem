@@ -8,6 +8,8 @@ using DrugsSystem.Data.Repositories;
 using DrugsSystem.Data.Infrastructure;
 using DrugsSystem.Models;
 
+using AutoMapper;
+
 namespace DrugSystem.Service
 {
     public class DepotService : BaseService, IDepotService
@@ -29,9 +31,11 @@ namespace DrugSystem.Service
             return _depotRepository.GetAssociatedCountires(entity.DepotID);
         }
 
-        IEnumerable<DrugUnit> IDepotService.GetAssociatedDrugUnits(Depot entity)
+        IEnumerable<Models.DrugUnitDTO> IDepotService.GetAssociatedDrugUnits(Depot entity)
         {
-            return _depotRepository.GetAssociatedDrugUnits(entity.DepotID);
+            // remove configuration to Global.asax ?????
+            Mapper.Initialize(cfg => cfg.CreateMap<DrugUnit, Models.DrugUnitDTO>());
+            return _depotRepository.GetAssociatedDrugUnits(entity.DepotID).Select(x => Mapper.Map<Models.DrugUnitDTO>(x));
         }
     }
 }

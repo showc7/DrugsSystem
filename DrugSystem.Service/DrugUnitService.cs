@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using DrugsSystem.Data.Repositories;
 using DrugsSystem.Data.Infrastructure;
+using DrugsSystem.Models;
 
 namespace DrugSystem.Service
 {
@@ -15,6 +16,11 @@ namespace DrugSystem.Service
         public DrugUnitService(IDbFactory dbFactory) : base(dbFactory)
         {
             _drugUnitRepository = _unitOfWork.DrugUnitRepository;
+        }
+
+        IEnumerable<DrugUnit> IDrugUnitService.getAll()
+        {
+            return _drugUnitRepository.GetAll();
         }
     }
 }

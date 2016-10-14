@@ -11,7 +11,7 @@ namespace DrugSystem.Service
     public interface IDepotService
     {
         IEnumerable<Depot> GetAll();
-        IEnumerable<DrugUnit> GetAssociatedDrugUnits(Depot entity);
+        IEnumerable<Models.DrugUnitDTO> GetAssociatedDrugUnits(Depot entity);
         IEnumerable<Country> GetAssociatedCountries(Depot entity);
     }
 }

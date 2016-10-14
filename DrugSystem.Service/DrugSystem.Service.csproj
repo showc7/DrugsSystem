@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.5.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseService.cs" />
     <Compile Include="CountryService.cs" />
     <Compile Include="DepotService.cs" />
     <Compile Include="DrugTypeService.cs" />
@@ -48,13 +53,24 @@
     <Compile Include="IDepotService.cs" />
     <Compile Include="IDrugTypeService.cs" />
     <Compile Include="IDrugUnitService.cs" />
+    <Compile Include="Models\DepotDrugUnitsDTO.cs" />
+    <Compile Include="Models\DrugTypeDTO.cs" />
+    <Compile Include="Models\DrugUnitDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DrugsSystem.Data\DrugsSystem.Data.csproj">
+      <Project>{ed14f003-2426-49e9-9a4e-c0176a354d55}</Project>
+      <Name>DrugsSystem.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DrugsSystem.Models\DrugsSystem.Models.csproj">
       <Project>{dd841db9-7569-4f97-b77f-3ddab17f3390}</Project>
       <Name>DrugsSystem.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
