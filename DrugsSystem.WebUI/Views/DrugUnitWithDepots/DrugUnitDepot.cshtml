@@ -1,0 +1,11 @@
+﻿@model DrugsSystem.WebUI.Models.DrugUnitWithDepot.DrugUnitDepotViewModel
+@{
+    ViewBag.Title = "DrugUnitDepot";
+}
+
+<h2>DrugUnitDepot</h2>
+
+@foreach(var v in Model.Depots)
+{
+    @v.DepotID;
+}
