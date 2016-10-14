@@ -53,13 +53,13 @@ namespace DrugsSystem.Data
 
         private static List<DrugUnit> GetDrugUnits()
         {
-            var drugUnits = new List<DrugUnit>(100);
-            for (int i = 0; i < 100; i++)
+            int drugUnitsCount = 100;
+            var drugUnits = new List<DrugUnit>(drugUnitsCount);
+            for (int i = 0; i < drugUnitsCount; i++)
             {
                 drugUnits.Add(new DrugUnit { DrugUnitID = "a_" + i.ToString(), PickNumber = i });
             }
             return drugUnits;
-
         }
     }
 }
