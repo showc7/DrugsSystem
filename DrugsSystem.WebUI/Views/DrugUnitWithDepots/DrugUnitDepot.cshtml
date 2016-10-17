@@ -5,7 +5,21 @@
 
 <h2>DrugUnitDepot</h2>
 
-@foreach(var v in Model.Depots)
+@using (Html.BeginForm())
 {
-    @v.DepotID;
+    <input type="submit" class="btn btn-primary" value="Save"/>
+    <ul>
+        @for (int i = 0; i < Model.List.Count; i++)
+        {
+            <li>
+                @Html.HiddenFor(x => x.List[i].DrugUnitID, Model.List[i].DrugUnitID)
+                @Html.HiddenFor(x => x.List[i].DrugUnitPickNumber, Model.List[i].DrugUnitPickNumber)
+
+                @Html.LabelFor(x => x.List[i].DrugUnitPickNumber, Model.List[i].DrugUnitPickNumber)
+                @Html.ValueFor(x => x.List[i].DrugUnitPickNumber, Model.List[i].DrugUnitPickNumber.ToString())
+                <br />
+                @Html.DropDownListFor(x => x.List[i].DepotID, Model.List[i].Depots)
+            </li>
+        }
+    </ul>
 }

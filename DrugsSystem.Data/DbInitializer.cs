@@ -10,7 +10,7 @@ using DrugsSystem.Models;
 
 namespace DrugsSystem.Data
 {
-    class DbInitializer : DropCreateDatabaseIfModelChanges<StoreEntities>
+    class DbInitializer : DropCreateDatabaseAlways<StoreEntities>
     {
         protected override void Seed(StoreEntities context)
         {
@@ -20,6 +20,17 @@ namespace DrugsSystem.Data
             GetDepots().ForEach(x => context.Depots.Add(x));
             GetDrugTypes().ForEach(x => context.DrugTypes.Add(x));
             GetDrugUnits().ForEach(x => context.DrugUnits.Add(x));
+            context.Commit();
+
+            Depot dpt = context.Depots.First(x => x.DepotName.Equals("Depot-0"));
+            if(dpt.DrugUnits == null)
+            {
+                dpt.DrugUnits = new List<DrugUnit>();
+            }
+            DrugUnit du = context.DrugUnits.First(y => y.PickNumber == 1);
+            dpt.DrugUnits.Add(du);
+            du = context.DrugUnits.First(y => y.PickNumber == 8);
+            dpt.DrugUnits.Add(du);
 
             context.Commit();
         }

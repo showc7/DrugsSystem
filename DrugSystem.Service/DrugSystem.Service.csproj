@@ -48,13 +48,17 @@
     <Compile Include="CountryService.cs" />
     <Compile Include="DepotService.cs" />
     <Compile Include="DrugTypeService.cs" />
+    <Compile Include="DrugUnitsDepotService.cs" />
     <Compile Include="DrugUnitService.cs" />
     <Compile Include="ICountryService.cs" />
     <Compile Include="IDepotService.cs" />
     <Compile Include="IDrugTypeService.cs" />
+    <Compile Include="IDrugUnitDepotService.cs" />
     <Compile Include="IDrugUnitService.cs" />
     <Compile Include="Models\DepotDrugUnitsDTO.cs" />
     <Compile Include="Models\DrugTypeDTO.cs" />
+    <Compile Include="Models\DrugUnitDepot.cs" />
+    <Compile Include="Models\DrugUnitDepotUpdateServiceModel.cs" />
     <Compile Include="Models\DrugUnitDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

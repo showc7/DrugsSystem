@@ -15,5 +15,10 @@ namespace DrugsSystem.Models
         public string DepotName { get; set; }
         public virtual List<DrugUnit> DrugUnits { get; set; }
         public virtual List<Country> Countries { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("{0}", DepotName);
+        }
     }
 }

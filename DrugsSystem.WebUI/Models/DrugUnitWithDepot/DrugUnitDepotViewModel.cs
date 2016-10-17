@@ -3,15 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
+using DrugsSystem.Models;
+using DrugSystem.Service.Models;
+
 namespace DrugsSystem.WebUI.Models.DrugUnitWithDepot
 {
     public class DrugUnitDepotViewModel
     {
-        public IEnumerable<DrugsSystem.Models.Depot> Depots { get; set; }
+        public List<DrugUnitWithDepotViewModel> List { get; set; }
 
-        public DrugUnitDepotViewModel(IEnumerable<DrugsSystem.Models.Depot> depots)
+        public DrugUnitDepotViewModel()
         {
-            Depots = depots;
+
+        }
+
+        public DrugUnitDepotViewModel(List<DrugUnitWithDepotViewModel> list)
+        {
+            this.List = list;
         }
     }
 }

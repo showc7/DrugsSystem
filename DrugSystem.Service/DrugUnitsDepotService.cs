@@ -1,0 +1,59 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using DrugsSystem.Data.Repositories;
+using DrugsSystem.Data.Infrastructure;
+using DrugsSystem.Models;
+using DrugSystem.Service.Models;
+
+namespace DrugSystem.Service
+{
+    public class DrugUnitsDepotService : BaseService, IDrugUnitDepotService
+    {
+        IDrugUnitService _drugUnitService;
+        IDepotService _depotService;
+
+        public DrugUnitsDepotService(IDbFactory dbFactory) : base(dbFactory)
+        {
+            _drugUnitService = new DrugUnitService(dbFactory);
+            _depotService = new DepotService(dbFactory);
+        }
+
+        // метод получающий drugUnit и его Depot
+        public List<DrugUnitDepot> DrugUnitWithDepot()
+        {
+            List<DrugUnitDepot> result = new List<DrugUnitDepot>();
+
+            foreach (DrugUnit du in _drugUnitService.getAll())
+            {
+                result.Add(new DrugUnitDepot(du, _depotService.GetAll().FirstOrDefault(x => x.DrugUnits != null && x.DrugUnits.Count != 0 && x.DrugUnits.Contains(du))));
+            }
+
+            return result;
+        }
+
+        public void UpdatedrugUnitWithDepot(List<DrugUnitDepotUpdateServiceModel> updateModels)
+        {
+            foreach(var v in updateModels)
+            {
+                var f = v.DepotID;
+                var ff = v.DrugUnitPickNumber;
+                /* злостный костыль */
+                if(v.DepotID == 0)
+                {
+                    continue;
+                }
+                var drugUnit = _drugUnitService.getAll().FirstOrDefault(x => x.PickNumber == v.DrugUnitPickNumber);
+                var depot = _depotService.GetAll().FirstOrDefault(x => x.DepotID == v.DepotID);
+                bool contains = depot.DrugUnits.Contains(drugUnit);
+                if(!contains)
+                {
+                    depot.DrugUnits.Add(drugUnit);
+                }
+            }
+        }
+    }
+}

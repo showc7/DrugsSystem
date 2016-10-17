@@ -37,5 +37,10 @@ namespace DrugSystem.Service
             Mapper.Initialize(cfg => cfg.CreateMap<DrugUnit, Models.DrugUnitDTO>());
             return _depotRepository.GetAssociatedDrugUnits(entity.DepotID).Select(x => Mapper.Map<Models.DrugUnitDTO>(x));
         }
+
+        public Depot GetDepotByDrugUnit(DrugUnit du)
+        {
+            return _depotRepository.GetAll().Select(x => { if (x.DrugUnits.Contains(du)) { return x; } else { return null; } }).FirstOrDefault();
+        }
     }
 }
