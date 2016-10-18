@@ -22,7 +22,10 @@ namespace DrugsSystem.Data
             GetDrugUnits().ForEach(x => context.DrugUnits.Add(x));
             context.Commit();
 
+            Country country = context.Countries.First(x => x.CountryName.Equals("Romania"));
             Depot dpt = context.Depots.First(x => x.DepotName.Equals("Depot-0"));
+            country.Depots = new List<Depot>();
+            country.Depots.Add(dpt);
             if(dpt.DrugUnits == null)
             {
                 dpt.DrugUnits = new List<DrugUnit>();

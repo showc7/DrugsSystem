@@ -8,7 +8,7 @@ namespace DrugSystem.Service.Models
 {
     public class DrugUnitDepotUpdateServiceModel
     {
-        public int DepotID { get; set; }
+        public int? DepotID { get; set; }
         public int DrugUnitPickNumber { get; set; }
     }
 }

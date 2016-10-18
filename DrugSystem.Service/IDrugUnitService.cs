@@ -5,11 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 using DrugsSystem.Models;
+using DrugSystem.Service.Models;
 
 namespace DrugSystem.Service
 {
     public interface IDrugUnitService
     {
         IEnumerable<DrugUnit> getAll();
+        DrugUnitAssociatedViewDataDTO GetAssociatedViewData(string id);
     }
 }

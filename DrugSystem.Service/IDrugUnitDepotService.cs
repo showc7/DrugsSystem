@@ -11,6 +11,6 @@ namespace DrugSystem.Service
     public interface IDrugUnitDepotService
     {
         List<DrugUnitDepot> DrugUnitWithDepot();
-        void UpdatedrugUnitWithDepot(List<DrugUnitDepotUpdateServiceModel> updateModels);
+        void UpdateDrugUnitWithDepot(List<DrugUnitDepotUpdateServiceModel> updateModels);
     }
 }

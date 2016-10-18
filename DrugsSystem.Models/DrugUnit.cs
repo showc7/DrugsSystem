@@ -14,5 +14,10 @@ namespace DrugsSystem.Models
         public string DrugUnitID { get; set; }
         public int PickNumber { get; set; }
         public DrugType DrugTypes { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("{0}", PickNumber);
+        }
     }
 }

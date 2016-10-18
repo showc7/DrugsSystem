@@ -35,14 +35,15 @@ namespace DrugSystem.Service
             return result;
         }
 
-        public void UpdatedrugUnitWithDepot(List<DrugUnitDepotUpdateServiceModel> updateModels)
+        public void UpdateDrugUnitWithDepot(List<DrugUnitDepotUpdateServiceModel> updateModels)
         {
             foreach(var v in updateModels)
             {
-                var f = v.DepotID;
-                var ff = v.DrugUnitPickNumber;
+                //fields:
+                //  v.DepotID;
+                //  v.DrugUnitPickNumber;
                 /* злостный костыль */
-                if(v.DepotID == 0)
+                if(v.DepotID == null)
                 {
                     continue;
                 }

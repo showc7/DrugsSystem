@@ -1,0 +1,29 @@
+﻿@model DrugsSystem.WebUI.Models.Depots.DrugUnitsListViewModel
+@{
+    ViewBag.Title = "DrugUnitsList";
+}
+
+<h2>DrugUnitsList</h2>
+
+@Html.DropDownListFor(x => x.DrugUnits,Model.DrugUnits)
+
+<div id="container"></div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            $('#DrugUnits').change(function ()
+            {
+                var value = $(this).val();
+                console.log(value);
+                $.ajax({
+                    type: 'GET',
+                    url: '@Url.Action("GetInfo")/' + value,
+                    success: function (data) {
+                        $('#container').replaceWith(data);
+                    }
+                });
+            });
+        })
+    </script>
+}

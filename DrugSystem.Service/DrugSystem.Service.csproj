@@ -57,6 +57,7 @@
     <Compile Include="IDrugUnitService.cs" />
     <Compile Include="Models\DepotDrugUnitsDTO.cs" />
     <Compile Include="Models\DrugTypeDTO.cs" />
+    <Compile Include="Models\DrugUnitAssociatedViewDataDTO.cs" />
     <Compile Include="Models\DrugUnitDepot.cs" />
     <Compile Include="Models\DrugUnitDepotUpdateServiceModel.cs" />
     <Compile Include="Models\DrugUnitDTO.cs" />
