@@ -42,6 +42,7 @@ namespace DrugsSystem.WebUI.App_Start
             builder.RegisterAssemblyTypes(typeof(DrugUnitRepository).Assembly)
                 .Where(t => t.Name.EndsWith("Repository"))
                 .AsImplementedInterfaces().InstancePerRequest();
+
             // Services
             builder.RegisterAssemblyTypes(typeof(CountryService).Assembly)
                .Where(t => t.Name.EndsWith("Service"))
