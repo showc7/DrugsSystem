@@ -200,13 +200,11 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DepotsController.cs" />
     <Compile Include="Controllers\DrugUnitWithDepotsController.cs" />
-    <Compile Include="Controllers\Helpers\DepotsToListViewModel.cs" />
+    <Compile Include="Controllers\Helpers\OrdersHelper.cs" />
     <Compile Include="Controllers\Helpers\DrugUnitWithDepotHelperMethods.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrderUnitsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

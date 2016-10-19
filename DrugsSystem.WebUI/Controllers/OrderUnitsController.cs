@@ -25,7 +25,7 @@ namespace DrugsSystem.WebUI.Controllers
         public ActionResult List()
         {
             return View(
-                Helpers.DepotsToListViewModel.ConvertDepotsToListViewModel(
+                Helpers.OrdersHelper.ConvertDepotsToListViewModel(
                     _depotService.GetAll()
                 )
             );
@@ -34,7 +34,7 @@ namespace DrugsSystem.WebUI.Controllers
         public ActionResult GetDrugTypes(string id)
         {
             return PartialView(
-                Helpers.DepotsToListViewModel.ConvertToSelectList(
+                Helpers.OrdersHelper.ConvertToSelectList(
                     _depotService.GetAssociatedDrugTypes(int.Parse(id)),
                     int.Parse(id)
                 )
@@ -45,7 +45,7 @@ namespace DrugsSystem.WebUI.Controllers
         {
             return PartialView(
                 "OrderResult",
-                Helpers.DepotsToListViewModel.CalculateOrder(
+                Helpers.OrdersHelper.CalculateOrder(
                     model,
                     _depotService
                 )

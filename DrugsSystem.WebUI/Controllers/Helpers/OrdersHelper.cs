@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace DrugsSystem.WebUI.Controllers.Helpers
 {
-    public static class DepotsToListViewModel
+    public static class OrdersHelper
     {
         public static ListViewModel ConvertDepotsToListViewModel(IEnumerable<Depot> depots)
         {
