@@ -31,16 +31,21 @@ namespace DrugsSystem.Data
                 dpt.DrugUnits = new List<DrugUnit>();
             }
             DrugUnit du = context.DrugUnits.First(y => y.PickNumber == 1);
+            DrugUnit du1 = context.DrugUnits.First(y => y.PickNumber == 2);
             DrugType dt = context.DrugTypes.First(t => t.DrugTypeName == "Type-0");
             du.DrugType = dt;
             du.Quantity = 4;
+            du1.DrugType = dt;
             if (dt.DrugUnits == null)
             {
                 dt.DrugUnits = new List<DrugUnit>();
             }
             dt.DrugUnits.Add(du);
+            dt.DrugUnits.Add(du1);
             dpt.DrugUnits.Add(du);
+            dpt.DrugUnits.Add(du1);
             du = context.DrugUnits.First(y => y.PickNumber == 8);
+            du.Quantity = 3;
             du.DrugType = dt;
             if (dt.DrugUnits == null)
             {

@@ -11,12 +11,14 @@ namespace DrugSystem.Service.Models
         public List<int> IDs { get; set; }
         public List<int> Values { get; set; }
         public List<string> drugUnitID { get; set; }
+        public List<string> Names { get; set; }
 
         public OrderResultDTO()
         {
             IDs = new List<int>();
             Values = new List<int>();
             drugUnitID = new List<string>();
+            Names = new List<string>();
         }
     }
 }

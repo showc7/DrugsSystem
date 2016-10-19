@@ -55,7 +55,7 @@ namespace DrugsSystem.WebUI.Controllers.Helpers
 
             DrugSystem.Service.Models.OrderResultDTO res = _depotService.MakeOrder(order);
             res.Values.ForEach(x => or.Values.Add(x.ToString()));
-            data.Names.ForEach(x => or.Names.Add(x));
+            res.Names.ForEach(x => or.Names.Add(x));
 
             return or;
         }

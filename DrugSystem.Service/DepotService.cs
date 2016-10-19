@@ -83,8 +83,10 @@ namespace DrugSystem.Service
                         int quantityResult = Math.Min(quantity, du.Quantity);
                         if(quantityResult > 0)
                         {
+                            quantity -= quantityResult;
                             or.drugUnitID.Add(du.DrugUnitID);
                             or.Values.Add(quantityResult);
+                            or.Names.Add(du.DrugUnitID);
                         }
                     }
                 }
