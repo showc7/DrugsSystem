@@ -9,7 +9,7 @@ using DrugsSystem.Models;
 
 namespace DrugsSystem.Data.Repositories
 {
-    class DrugUnitRepository : BaseRepository<DrugUnit>, IDrugUnitRepository
+    public class DrugUnitRepository : BaseRepository<DrugUnit>, IDrugUnitRepository
     {
         public DrugUnitRepository(IDbFactory dbFactory) : base(dbFactory)
         {

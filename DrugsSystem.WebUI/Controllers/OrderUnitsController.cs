@@ -11,8 +11,14 @@ namespace DrugsSystem.WebUI.Controllers
 {
     public class OrderUnitsController : Controller
     {
-        private static DbFactory _dbfactory = new DbFactory();
-        private IDepotService _depotService = new DepotService(_dbfactory);
+        //private static DbFactory _dbfactory = new DbFactory();
+        private IDepotService _depotService;// = new DepotService(_dbfactory);
+
+        public OrderUnitsController(IDepotService depotService)
+        {
+            _depotService = depotService;
+        }
+
         // GET: OrderUnits
         public ActionResult Index()
         {

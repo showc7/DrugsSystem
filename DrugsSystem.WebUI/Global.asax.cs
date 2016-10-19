@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DrugsSystem.WebUI.App_Start;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,6 +18,7 @@ namespace DrugsSystem.WebUI
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             InitalizeAutomapper();
+            Bootstrapper.Run();
         }
 
         protected void InitalizeAutomapper()
