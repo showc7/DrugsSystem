@@ -16,7 +16,7 @@ namespace DrugsSystem.WebUI.Controllers
         // GET: Depots
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("DrugUnitsList");
         }
 
         [HttpGet]

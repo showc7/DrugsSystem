@@ -20,7 +20,7 @@
                     type: 'GET',
                     url: '@Url.Action("GetInfo")/' + value,
                     success: function (data) {
-                        $('#container').replaceWith(data);
+                        $('#container').html(data);
                     }
                 });
             });

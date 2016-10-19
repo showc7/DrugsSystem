@@ -9,25 +9,30 @@
 @using (Html.BeginForm())
 {
     <input type="submit" class="btn btn-primary" value="Save" />
-        <ul>
+ 
+        <table>
             @for (int i = 0; i < Model.DrugUnits.Count; i++)
             {
-                <li>
-                    @Html.HiddenFor(x => x.DrugUnits[i].DrugUnitID, Model.DrugUnits[i].DrugUnitID)
-                    @Html.HiddenFor(x => x.DrugUnits[i].DrugUnitPickNumber, Model.DrugUnits[i].DrugUnitPickNumber)
+                <tr>
+                    <td>
+                        @Html.HiddenFor(x => x.DrugUnits[i].DrugUnitID, Model.DrugUnits[i].DrugUnitID)
+                        @Html.HiddenFor(x => x.DrugUnits[i].DrugUnitPickNumber, Model.DrugUnits[i].DrugUnitPickNumber)
 
-                    @Html.LabelFor(x => x.DrugUnits[i].DrugUnitPickNumber, Model.DrugUnits[i].DrugUnitPickNumber)
-                    @Html.ValueFor(x => x.DrugUnits[i].DrugUnitPickNumber, Model.DrugUnits[i].DrugUnitPickNumber.ToString())
-                    <br />
-                    @Html.DropDownListFor(x => x.DrugUnits[i].SelectedDepotID, Model.SelectItem(Model.Depots, Model.DrugUnits[i].SelectedDepotID))
-                    
-                </li>
+                        @Html.LabelFor(x => x.DrugUnits[i].DrugUnitPickNumber, Model.DrugUnits[i].DrugUnitPickNumber)
+                    </td>
+                    <td>
+                        @Html.ValueFor(x => x.DrugUnits[i].DrugUnitPickNumber, Model.DrugUnits[i].DrugUnitPickNumber.ToString())
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(x => x.DrugUnits[i].SelectedDepotID, Model.SelectItem(Model.Depots, Model.DrugUnits[i].SelectedDepotID), new { @class = "form-control" })
+                    </td>
+                </tr>
             }
-            @for (int j = 0; j < Model.Depots.Count; j++)
-            {
-                @Html.HiddenFor(model => Model.Depots[j].Selected)
-                @Html.HiddenFor(model => Model.Depots[j].Text)
-                @Html.HiddenFor(model => Model.Depots[j].Value)
-            }
-        </ul>
+        </table>
+        for (int j = 0; j < Model.Depots.Count; j++)
+        {
+            @Html.HiddenFor(model => Model.Depots[j].Selected)
+            @Html.HiddenFor(model => Model.Depots[j].Text)
+            @Html.HiddenFor(model => Model.Depots[j].Value)
+        }
 }

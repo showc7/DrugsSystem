@@ -4,13 +4,25 @@
 }
 
 <h2>DepotsInfo</h2>
-
-@Model.CountryName
-<br/>
-@Model.DepotName
-<br />
-@Model.DrugTypeName
-<br />
-@Model.DrugUnitID
-<br />
-@Model.PickNumber
+<table>
+    <tr>
+        <td>CountryName</td>
+        <td>@Model.CountryName</td>
+    </tr>
+    <tr>
+        <td>DepotName</td>
+        <td>@Model.DepotName</td>
+    </tr>
+    <tr>
+        <td>DrugTypeName</td>
+        <td>@Model.DrugTypeName</td>
+    </tr>
+    <tr>
+        <td>DrugUnitID</td>
+        <td>@Model.DrugUnitID</td>
+    </tr>
+    <tr>
+        <td>PickNumber</td>
+        <td>@Model.PickNumber</td>
+    </tr>
+</table>

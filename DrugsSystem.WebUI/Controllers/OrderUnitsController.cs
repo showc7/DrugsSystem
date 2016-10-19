@@ -16,7 +16,7 @@ namespace DrugsSystem.WebUI.Controllers
         // GET: OrderUnits
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("List");
         }
 
         // список депотов -> список типов -> количество для каждого типа -> подсчет

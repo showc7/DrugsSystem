@@ -19,7 +19,7 @@ namespace DrugsSystem.WebUI.Controllers
         // GET: DrugUnitWithDepots
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("DrugUnitDepot");
         }
 
         public ActionResult DrugUnits()

@@ -29,9 +29,9 @@ namespace DrugSystem.Service
             // Drug Unit Id
             // Pick Number
             var result = new DrugUnitAssociatedViewDataDTO();
-            result.DepotName = _depotRepository.GetAll().FirstOrDefault(x => x.DrugUnits.Any(c => c.DrugUnitID == id)).DepotName;
+            result.DepotName = _depotRepository.GetAll().FirstOrDefault(x => x.DrugUnits.Any(c => c.DrugUnitID == id))?.DepotName;
             var countries = _depotRepository.GetAll().FirstOrDefault(x => x.DrugUnits.Any(c => c.DrugUnitID == id));
-            if (countries.Countries != null && countries.Countries.Count > 0)
+            if (countries != null && countries.Countries != null && countries.Countries.Count > 0)
             {
                 result.CountryName = countries.Countries[0].CountryName;
             }
