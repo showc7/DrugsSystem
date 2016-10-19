@@ -79,7 +79,6 @@ namespace DrugSystem.Service
                 {
                     if(du.DrugType.DrugTypeID == typeID && du.Quantity > 0)
                     {
-                        // quantity
                         int quantityResult = Math.Min(quantity, du.Quantity);
                         if(quantityResult > 0)
                         {

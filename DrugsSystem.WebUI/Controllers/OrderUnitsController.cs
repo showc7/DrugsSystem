@@ -19,7 +19,7 @@ namespace DrugsSystem.WebUI.Controllers
             return RedirectToAction("List");
         }
 
-        // список депотов -> список типов -> количество для каждого типа -> подсчет
+        // depots list -> types list -> count for type -> count
 
         [HttpGet]
         public ActionResult List()
