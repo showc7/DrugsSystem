@@ -61,6 +61,8 @@
     <Compile Include="Models\DrugUnitDepot.cs" />
     <Compile Include="Models\DrugUnitDepotUpdateServiceModel.cs" />
     <Compile Include="Models\DrugUnitDTO.cs" />
+    <Compile Include="Models\OrderDTO.cs" />
+    <Compile Include="Models\OrderResultDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

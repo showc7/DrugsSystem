@@ -203,6 +203,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DepotsController.cs" />
     <Compile Include="Controllers\DrugUnitWithDepotsController.cs" />
+    <Compile Include="Controllers\Helpers\DepotsToListViewModel.cs" />
     <Compile Include="Controllers\Helpers\DrugUnitWithDepotHelperMethods.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -217,6 +218,9 @@
     <Compile Include="Models\DrugUnitWithDepot\DrugUnitsViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\OrderUnits\DrugTypesViewModel.cs" />
+    <Compile Include="Models\OrderUnits\ListViewModel.cs" />
+    <Compile Include="Models\OrderUnits\OrderResult.cs" />
     <Compile Include="Models\ViewModelDrugUnit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -285,10 +289,12 @@
     <Content Include="Views\DrugUnitWithDepots\DrugUnits.cshtml" />
     <Content Include="Views\Depots\GetInfo.cshtml" />
     <Content Include="Views\Depots\DrugUnitsList.cshtml" />
+    <Content Include="Views\OrderUnits\List.cshtml" />
+    <Content Include="Views\OrderUnits\GetDrugTypes.cshtml" />
+    <Content Include="Views\OrderUnits\OrderResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\OrderUnits\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

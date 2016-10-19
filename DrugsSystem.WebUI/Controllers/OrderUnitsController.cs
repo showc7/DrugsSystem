@@ -4,10 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+using DrugsSystem.Data.Infrastructure;
+using DrugSystem.Service;
+
 namespace DrugsSystem.WebUI.Controllers
 {
     public class OrderUnitsController : Controller
     {
+        private static DbFactory _dbfactory = new DbFactory();
+        private IDepotService _depotService = new DepotService(_dbfactory);
         // GET: OrderUnits
         public ActionResult Index()
         {
@@ -19,18 +24,33 @@ namespace DrugsSystem.WebUI.Controllers
         [HttpGet]
         public ActionResult List()
         {
-            return View();
+            return View(
+                Helpers.DepotsToListViewModel.ConvertDepotsToListViewModel(
+                    _depotService.GetAll()
+                )
+            );
         }
-
         [HttpGet]
-        public ActionResult GetDrugTypes(int depotID)
+        public ActionResult GetDrugTypes(string id)
         {
-            return PartialView();
+            return PartialView(
+                Helpers.DepotsToListViewModel.ConvertToSelectList(
+                    _depotService.GetAssociatedDrugTypes(int.Parse(id)
+                    ),
+                    int.Parse(id)
+                )
+            );
         }
         [HttpPost]
-        public ActionResult Calculate()
+        public ActionResult Calculate(Models.OrderUnits.DrugTypesViewModel model)
         {
-            return PartialView();
+            return PartialView(
+                "OrderResult",
+                Helpers.DepotsToListViewModel.CalculateOrder(
+                    model,
+                    _depotService
+                )
+            );
         }
     }
 }

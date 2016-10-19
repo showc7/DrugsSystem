@@ -21,7 +21,7 @@ namespace DrugsSystem.WebUI.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("DrugsSystemDatabase", throwIfV1Schema: false)
         {
         }
 

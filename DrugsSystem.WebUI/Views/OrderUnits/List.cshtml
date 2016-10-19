@@ -1,0 +1,29 @@
+﻿@model DrugsSystem.WebUI.Models.OrderUnits.ListViewModel
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+@Html.DropDownListFor(x => x.DepotName,Model.Depots)
+
+<div id="container"></div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            $('#DepotName').change(function ()
+            {
+                var value = $(this).val();
+                console.log(value);
+                $.ajax({
+                    type: 'GET',
+                    url: '@Url.Action("GetDrugTypes")/' + value,
+                    success: function (data) {
+                        $('#container').html(data);
+                    }
+                });
+            });
+        })
+    </script>
+}

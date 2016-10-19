@@ -13,7 +13,8 @@ namespace DrugsSystem.Models
         [Key]
         public string DrugUnitID { get; set; }
         public int PickNumber { get; set; }
-        public DrugType DrugTypes { get; set; }
+        public virtual DrugType DrugType { get; set; }
+        public int Quantity { get; set; }
 
         public override string ToString()
         {

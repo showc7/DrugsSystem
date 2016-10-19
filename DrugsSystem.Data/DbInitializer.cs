@@ -30,10 +30,31 @@ namespace DrugsSystem.Data
             {
                 dpt.DrugUnits = new List<DrugUnit>();
             }
+            context.Entry(dpt).State = EntityState.Modified;
             DrugUnit du = context.DrugUnits.First(y => y.PickNumber == 1);
+            DrugType dt = context.DrugTypes.First(t => t.DrugTypeName == "Type-0");
+            du.DrugType = dt;
+            du.Quantity = 4;
+            context.Entry(du).State = EntityState.Modified;
+            if (dt.DrugUnits == null)
+            {
+                dt.DrugUnits = new List<DrugUnit>();
+            }
+            dt.DrugUnits.Add(du);
+            context.Entry(dt).State = EntityState.Modified;
             dpt.DrugUnits.Add(du);
+            context.Entry(dpt).State = EntityState.Modified;
             du = context.DrugUnits.First(y => y.PickNumber == 8);
+            du.DrugType = dt;
+            context.Entry(du).State = EntityState.Modified;
+            if (dt.DrugUnits == null)
+            {
+                dt.DrugUnits = new List<DrugUnit>();
+            }
+            dt.DrugUnits.Add(du);
+            context.Entry(dt).State = EntityState.Modified;
             dpt.DrugUnits.Add(du);
+            context.Entry(dpt).State = EntityState.Modified;
 
             context.Commit();
         }

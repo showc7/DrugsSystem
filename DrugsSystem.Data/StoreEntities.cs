@@ -12,7 +12,7 @@ namespace DrugsSystem.Data
 {
     public class StoreEntities : DbContext
     {
-        public StoreEntities() : base("StoreEntities")
+        public StoreEntities() : base("DrugsSystemDatabase")
         {
 
         }

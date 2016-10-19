@@ -36,8 +36,8 @@ namespace DrugSystem.Service
                 result.CountryName = countries.Countries[0].CountryName;
             }
             var drugTypes = _drugUnitRepository.GetAll().FirstOrDefault(x => x.DrugUnitID == id);
-            if(drugTypes != null && drugTypes.DrugTypes != null)
-            result.DrugTypeName = drugTypes.DrugTypes.DrugTypeName;
+            if(drugTypes != null && drugTypes.DrugType != null)
+            result.DrugTypeName = drugTypes.DrugType.DrugTypeName;
             result.DrugUnitID = id;
             result.PickNumber = _drugUnitRepository.GetAll().FirstOrDefault(x => x.DrugUnitID == id).PickNumber;
             return result;

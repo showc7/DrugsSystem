@@ -42,5 +42,55 @@ namespace DrugSystem.Service
         {
             return _depotRepository.GetAll().Select(x => { if (x.DrugUnits.Contains(du)) { return x; } else { return null; } }).FirstOrDefault();
         }
+
+        public List<DrugType> GetAssociatedDrugTypes(int id)
+        {
+            List<DrugType> result = new List<DrugType>();
+
+            Depot depot = _depotRepository.GetAll().FirstOrDefault(x => x.DepotID == id);
+            depot.DrugUnits.ForEach(drugUnit =>
+            {
+                if(result.Count > 0 && !result.Any(r => r.DrugTypeID == drugUnit.DrugType.DrugTypeID))
+                {
+                    result.Add(drugUnit.DrugType);
+                }
+                if(result.Count == 0)
+                {
+                    result.Add(drugUnit.DrugType);
+                }
+            });
+
+            return result;
+        }
+
+        public Models.OrderResultDTO MakeOrder(Models.OrderDTO order)
+        {
+            Models.OrderResultDTO or = new Models.OrderResultDTO();
+
+            Depot depot = _depotRepository.GetAll().FirstOrDefault(x => x.DepotID == order.DepotID);
+            List<DrugUnit> drugUnits = depot.DrugUnits;
+
+            for(int idx = 0; idx < order.IDs.Count; idx++ )
+            {
+                int typeID = order.IDs[idx];
+                int quantity = order.Values[idx];
+
+                foreach(DrugUnit du in drugUnits)
+                {
+                    if(du.DrugType.DrugTypeID == typeID && du.Quantity > 0)
+                    {
+                        // quantity
+                        int quantityResult = Math.Min(quantity, du.Quantity);
+                        if(quantityResult > 0)
+                        {
+                            or.drugUnitID.Add(du.DrugUnitID);
+                            or.Values.Add(quantityResult);
+                        }
+                    }
+                }
+            }
+
+            return or;
+        }
     }
 }

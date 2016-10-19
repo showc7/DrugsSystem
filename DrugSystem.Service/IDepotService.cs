@@ -13,5 +13,7 @@ namespace DrugSystem.Service
         IEnumerable<Depot> GetAll();
         IEnumerable<Models.DrugUnitDTO> GetAssociatedDrugUnits(Depot entity);
         IEnumerable<Country> GetAssociatedCountries(Depot entity);
+        List<DrugType> GetAssociatedDrugTypes(int id);
+        Models.OrderResultDTO MakeOrder(Models.OrderDTO order);
     }
 }
