@@ -35,8 +35,7 @@ namespace DrugsSystem.WebUI.Controllers
         {
             return PartialView(
                 Helpers.DepotsToListViewModel.ConvertToSelectList(
-                    _depotService.GetAssociatedDrugTypes(int.Parse(id)
-                    ),
+                    _depotService.GetAssociatedDrugTypes(int.Parse(id)),
                     int.Parse(id)
                 )
             );
