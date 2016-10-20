@@ -86,7 +86,7 @@ namespace DrugsSystem.Data.Infrastructure
                     exc is ObjectDisposedException ||
                     exc is InvalidOperationException)
                 {
-                    Debug.WriteLine("Exception: " + exc.Message + exc.Source);
+                    Debug.WriteLine("Exception: " + exc.Log());
                 }
                 else
                 {
