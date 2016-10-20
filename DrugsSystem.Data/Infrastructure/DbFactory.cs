@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DrugsSystem.Data.Infrastructure
 {
-    public class DbFactory : Disposable, IDbFactory
+    public class DbFactory : DisposableObject, IDbFactory
     {
         StoreEntities _dbContext;
 
