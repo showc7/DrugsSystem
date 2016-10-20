@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DrugsSystem.Data.Infrastructure
 {
-    public class Disposable : IDisposable
+    public class DisposableObject : IDisposable
     {
         private bool _isDisposed;
 
@@ -31,7 +31,7 @@ namespace DrugsSystem.Data.Infrastructure
 
         }
 
-        ~Disposable()
+        ~DisposableObject()
         {
             Dispose(false);
         }
