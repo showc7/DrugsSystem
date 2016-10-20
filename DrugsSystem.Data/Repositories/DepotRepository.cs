@@ -25,5 +25,10 @@ namespace DrugsSystem.Data.Repositories
         {
             return this.DbContext.Depots.Where(x => x.DepotID == DepotID).FirstOrDefault().DrugUnits.AsEnumerable();
         }
+
+        public override Depot GetById(int id)
+        {
+            return DbContext.Depots.Where(x => x.DepotID == id).FirstOrDefault();
+        }
     }
 }
