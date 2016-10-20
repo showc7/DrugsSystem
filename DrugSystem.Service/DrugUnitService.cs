@@ -47,5 +47,10 @@ namespace DrugSystem.Service
         {
             return _drugUnitRepository.GetAll();
         }
+
+        public DrugUnit GetByPickNumber(int pickNumber)
+        {
+            return _drugUnitRepository.GetByPickNumber(pickNumber);
+        }
     }
 }

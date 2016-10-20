@@ -11,6 +11,6 @@ namespace DrugsSystem.Data.Repositories
 {
     public interface IDrugUnitRepository : IRepository<DrugUnit>
     {
-
+        DrugUnit GetByPickNumber(int pickNumber);
     }
 }

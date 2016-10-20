@@ -15,5 +15,6 @@ namespace DrugSystem.Service
         IEnumerable<Country> GetAssociatedCountries(Depot entity);
         List<DrugType> GetAssociatedDrugTypes(int id);
         Models.OrderResultDTO MakeOrder(Models.OrderDTO order);
+        Depot GetById(int? id);
     }
 }

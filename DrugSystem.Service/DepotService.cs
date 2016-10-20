@@ -95,5 +95,10 @@ namespace DrugSystem.Service
 
             return or;
         }
+
+        public Depot GetById(int? id)
+        {
+            return _depotRepository.GetById(id);
+        }
     }
 }

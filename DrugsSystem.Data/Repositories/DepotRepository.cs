@@ -30,5 +30,14 @@ namespace DrugsSystem.Data.Repositories
         {
             return DbContext.Depots.Where(x => x.DepotID == id).FirstOrDefault();
         }
+        public Depot GetById(int? id)
+        {
+            if(id == null)
+            {
+                return null;
+            }
+
+            return GetById((int)id);
+        }
     }
 }

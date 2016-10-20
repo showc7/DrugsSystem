@@ -47,8 +47,10 @@ namespace DrugSystem.Service
                 {
                     continue;
                 }
-                var drugUnit = _drugUnitService.getAll().FirstOrDefault(x => x.PickNumber == v.DrugUnitPickNumber);
-                var depot = _depotService.GetAll().FirstOrDefault(x => x.DepotID == v.DepotID);
+                //var drugUnit = _drugUnitService.getAll().FirstOrDefault(x => x.PickNumber == v.DrugUnitPickNumber);
+                var drugUnit = _drugUnitService.GetByPickNumber(v.DrugUnitPickNumber);
+                //var depot = _depotService.GetAll().FirstOrDefault(x => x.DepotID == v.DepotID);
+                var depot = _depotService.GetById(v.DepotID);
                 bool contains = depot.DrugUnits.Contains(drugUnit);
                 if(!contains)
                 {

@@ -13,5 +13,6 @@ namespace DrugSystem.Service
     {
         IEnumerable<DrugUnit> getAll();
         DrugUnitAssociatedViewDataDTO GetAssociatedViewData(string id);
+        DrugUnit GetByPickNumber(int pickNumber);
     }
 }

@@ -15,5 +15,15 @@ namespace DrugsSystem.Data.Repositories
         {
 
         }
+
+        public DrugUnit GetById(string id)
+        {
+            return DbContext.DrugUnits.Where(x => x.DrugUnitID == id).FirstOrDefault();
+        }
+
+        public DrugUnit GetByPickNumber(int pickNumber)
+        {
+            return DbContext.DrugUnits.Where(x => x.PickNumber == pickNumber).FirstOrDefault();
+        }
     }
 }
