@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 using DrugsSystem.Data.Repositories;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 
 namespace DrugsSystem.Data.Infrastructure
 {
@@ -70,8 +73,26 @@ namespace DrugsSystem.Data.Infrastructure
 
         public void Commit()
         {
-            // add exception catching
-            DbContext.Commit();
+            try
+            {
+                DbContext.Commit();
+            }
+            catch(Exception exc)
+            {
+                if (exc is DbUpdateException ||
+                    exc is DbUpdateConcurrencyException ||
+                    exc is DbEntityValidationException ||
+                    exc is NotSupportedException ||
+                    exc is ObjectDisposedException ||
+                    exc is InvalidOperationException)
+                {
+                    Debug.WriteLine("Exception: " + exc.Message + exc.Source);
+                }
+                else
+                {
+                    throw exc;
+                }
+            }
         }
 
         void IUnitOfWork.Commit()
