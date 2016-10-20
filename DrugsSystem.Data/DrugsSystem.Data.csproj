@@ -59,7 +59,8 @@
   <ItemGroup>
     <Compile Include="DbInitializer.cs" />
     <Compile Include="Infrastructure\DbFactory.cs" />
-    <Compile Include="Infrastructure\Disposable.cs" />
+    <Compile Include="Infrastructure\DisposableObject.cs" />
+    <Compile Include="Infrastructure\ExceptionExtensions.cs" />
     <Compile Include="Infrastructure\IDbFactory.cs" />
     <Compile Include="Infrastructure\IRepository.cs" />
     <Compile Include="Infrastructure\IUnitOfWork.cs" />

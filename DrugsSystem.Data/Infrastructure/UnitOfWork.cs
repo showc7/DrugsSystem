@@ -73,26 +73,10 @@ namespace DrugsSystem.Data.Infrastructure
 
         public void Commit()
         {
-            try
+            ExceptionExtensions.Handler(() =>
             {
                 DbContext.Commit();
-            }
-            catch(Exception exc)
-            {
-                if (exc is DbUpdateException ||
-                    exc is DbUpdateConcurrencyException ||
-                    exc is DbEntityValidationException ||
-                    exc is NotSupportedException ||
-                    exc is ObjectDisposedException ||
-                    exc is InvalidOperationException)
-                {
-                    Debug.WriteLine("Exception: " + exc.Log());
-                }
-                else
-                {
-                    throw exc;
-                }
-            }
+            });
         }
 
         void IUnitOfWork.Commit()
