@@ -21,6 +21,9 @@
                     url: '@Url.Action("GetDrugTypes")/' + value,
                     success: function (data) {
                         $('#container').html(data);
+                    },
+                    error: function (data) {
+                        $('#container').html('request data error');
                     }
                 });
             });
