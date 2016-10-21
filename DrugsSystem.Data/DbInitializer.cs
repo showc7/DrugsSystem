@@ -10,8 +10,8 @@ using DrugsSystem.Models;
 
 namespace DrugsSystem.Data
 {
-    //class DbInitializer : CreateDatabaseIfNotExists<StoreEntities>
-    class DbInitializer : DropCreateDatabaseAlways<StoreEntities>
+    class DbInitializer : CreateDatabaseIfNotExists<StoreEntities>
+    //class DbInitializer : DropCreateDatabaseAlways<StoreEntities>
     {
         protected override void Seed(StoreEntities context)
         {

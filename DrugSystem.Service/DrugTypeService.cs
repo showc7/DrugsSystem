@@ -13,7 +13,7 @@ namespace DrugSystem.Service
     {
         private IDrugTypeRepository _drugTypeRepository;
 
-        public DrugTypeService(DbFactory dbFactory) : base(dbFactory)
+        public DrugTypeService(IDbFactory dbFactory) : base(dbFactory)
         {
             _drugTypeRepository = _unitOfWork.DrugTypeRepository;
         }
