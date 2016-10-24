@@ -30,7 +30,7 @@ namespace DrugsSystem.Data.Repositories
         {
             return DbContext.Depots.Where(x => x.DepotID == id).FirstOrDefault();
         }
-        public Depot GetById(int? id)
+        public Depot GetByNullableId(int? id)
         {
             if(id == null)
             {
