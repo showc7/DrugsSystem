@@ -40,7 +40,6 @@ namespace DrugsSystem.WebUI.Controllers
         [HttpPost]
         public ActionResult DrugUnitDepot(Models.DrugUnitWithDepotViewModel m)
         {
-            //return View(m);
             List<DrugSystem.Service.Models.DrugUnitDepotUpdateServiceModel> updateModels = new List<DrugSystem.Service.Models.DrugUnitDepotUpdateServiceModel>();
             m.DrugUnits.ForEach(v => updateModels.Add(AutoMapper.Mapper.Map<Models.ViewModelDrugUnit, DrugSystem.Service.Models.DrugUnitDepotUpdateServiceModel>(v)));
             
