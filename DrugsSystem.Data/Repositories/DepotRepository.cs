@@ -26,18 +26,19 @@ namespace DrugsSystem.Data.Repositories
             return this.DbContext.Depots.Where(x => x.DepotID == DepotID).FirstOrDefault().DrugUnits.AsEnumerable();
         }
 
-        public override Depot GetById(int id)
-        {
-            return DbContext.Depots.Where(x => x.DepotID == id).FirstOrDefault();
-        }
-        public Depot GetByNullableId(int? id)
+        public Depot GetById(int? id)
         {
             if(id == null)
             {
                 return null;
             }
 
-            return GetById((int)id);
+            return base.GetById((int)id);
+        }
+
+        public Depot GetById(object id)
+        {
+            return base.GetById((int)id);
         }
 
         public Depot GetByDrugUnitID(string id)

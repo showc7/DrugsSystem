@@ -13,7 +13,7 @@ namespace DrugsSystem.Data.Repositories
     {
         IEnumerable<Country> GetAssociatedCountires(int DepotID);
         IEnumerable<DrugUnit> GetAssociatedDrugUnits(int DepotID);
-        Depot GetByNullableId(int? id);
+        Depot GetById(int? id);
         Depot GetByDrugUnitID(string id);
     }
 }
