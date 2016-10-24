@@ -42,7 +42,6 @@ namespace DrugSystem.Service
         {
             List<DrugType> result = new List<DrugType>();
 
-            //Depot depot = _depotRepository.GetAll().FirstOrDefault(x => x.DepotID == id);
             Depot depot = _depotRepository.GetByNullableId(id);
             depot.DrugUnits.ForEach(drugUnit =>
             {
@@ -63,7 +62,6 @@ namespace DrugSystem.Service
         {
             Models.OrderResultDTO or = new Models.OrderResultDTO();
 
-            //Depot depot = _depotRepository.GetAll().FirstOrDefault(x => x.DepotID == order.DepotID);
             Depot depot = _depotRepository.GetByNullableId(order.DepotID);
             List<DrugUnit> drugUnits = depot.DrugUnits;
 
