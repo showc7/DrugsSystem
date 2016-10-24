@@ -63,7 +63,6 @@ namespace DrugSystem.Service
             Models.OrderResultDTO or = new Models.OrderResultDTO();
 
             Depot depot = _depotRepository.GetById(order.DepotID);
-            //_depotRepository.GetById()
             List<DrugUnit> drugUnits = depot.DrugUnits;
 
             for(int idx = 0; idx < order.IDs.Count; idx++ )
