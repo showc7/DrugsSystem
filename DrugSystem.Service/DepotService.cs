@@ -38,11 +38,6 @@ namespace DrugSystem.Service
             return _depotRepository.GetAssociatedDrugUnits(entity.DepotID).Select(x => Mapper.Map<Models.DrugUnitDTO>(x));
         }
 
-        public Depot GetDepotByDrugUnit(DrugUnit du)
-        {
-            return _depotRepository.GetAll().Select(x => { if (x.DrugUnits.Contains(du)) { return x; } else { return null; } }).FirstOrDefault();
-        }
-
         public List<DrugType> GetAssociatedDrugTypes(int id)
         {
             List<DrugType> result = new List<DrugType>();

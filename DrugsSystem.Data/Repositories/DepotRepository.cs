@@ -39,5 +39,10 @@ namespace DrugsSystem.Data.Repositories
 
             return GetById((int)id);
         }
+
+        public Depot GetByDrugUnitID(string id)
+        {
+            return DbContext.Depots.FirstOrDefault(x => x.DrugUnits.Any(c => c.DrugUnitID == id));
+        }
     }
 }

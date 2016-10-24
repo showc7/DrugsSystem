@@ -29,17 +29,19 @@ namespace DrugSystem.Service
             // Drug Unit Id
             // Pick Number
             var result = new DrugUnitAssociatedViewDataDTO();
-            result.DepotName = _depotRepository.GetAll().FirstOrDefault(x => x.DrugUnits.Any(c => c.DrugUnitID == id))?.DepotName;
-            var countries = _depotRepository.GetAll().FirstOrDefault(x => x.DrugUnits.Any(c => c.DrugUnitID == id));
-            if (countries != null && countries.Countries != null && countries.Countries.Count > 0)
+            var depot = _depotRepository.GetByDrugUnitID(id);
+            result.DepotName = depot?.DepotName;
+            
+            if (depot != null && depot.Countries != null && depot.Countries.Count > 0)
             {
-                result.CountryName = countries.Countries[0].CountryName;
+                result.CountryName = depot.Countries[0].CountryName;
             }
-            var drugTypes = _drugUnitRepository.GetAll().FirstOrDefault(x => x.DrugUnitID == id);
-            if(drugTypes != null && drugTypes.DrugType != null)
-            result.DrugTypeName = drugTypes.DrugType.DrugTypeName;
+
+            var drugUnit = _drugUnitRepository.GetById(id);
+            if(drugUnit != null && drugUnit.DrugType != null)
+            result.DrugTypeName = drugUnit.DrugType.DrugTypeName;
             result.DrugUnitID = id;
-            result.PickNumber = _drugUnitRepository.GetAll().FirstOrDefault(x => x.DrugUnitID == id).PickNumber;
+            result.PickNumber = _drugUnitRepository.GetById(id).PickNumber;
             return result;
         }
 

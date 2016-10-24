@@ -14,5 +14,6 @@ namespace DrugsSystem.Data.Repositories
         IEnumerable<Country> GetAssociatedCountires(int DepotID);
         IEnumerable<DrugUnit> GetAssociatedDrugUnits(int DepotID);
         Depot GetById(int? id);
+        Depot GetByDrugUnitID(string id);
     }
 }
