@@ -23,18 +23,13 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("task0", "DrugUnitDepot", "DrugUnitWithDepots")</li>
                     <li>@Html.ActionLink("task1", "DrugUnitsList", "Depots")</li>
-                    <li>@Html.ActionLink("task2", "Index", "OrderUnits")</li>
+                    <li>@Html.ActionLink("task2", "List", "OrderUnits")</li>
                 </ul>
-                @*Html.Partial("_LoginPartial")*@
             </div>
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            @*<p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>*@
-        </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
