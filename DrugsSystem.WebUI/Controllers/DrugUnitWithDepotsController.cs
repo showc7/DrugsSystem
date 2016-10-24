@@ -12,35 +12,29 @@ namespace DrugsSystem.WebUI.Controllers
 {
     public class DrugUnitWithDepotsController : Controller
     {
-        //private static DbFactory _dbfactory = new DbFactory();
-        private IDrugUnitService _drugUnitService;// = new DrugUnitService(_dbfactory);
-        private IDepotService _depotService;// = new DepotService(_dbfactory);
-        private IDrugUnitDepotService _drugUnitDepotService;// = new DrugUnitsDepotService(_dbfactory);
+        private IDrugUnitService _drugUnitService;
+        private IDepotService _depotService;
+        private IDrugUnitDepotService _drugUnitDepotService;
         public DrugUnitWithDepotsController(IDrugUnitService drugUnitService, IDepotService depotService, IDrugUnitDepotService drugUnitDepotService)
         {
             _drugUnitService = drugUnitService;
             _depotService = depotService;
             _drugUnitDepotService = drugUnitDepotService;
         }
-        // GET: DrugUnitWithDepots
-        public ActionResult Index()
-        {
-            return RedirectToAction("DrugUnitDepot");
-        }
 
         public ActionResult DrugUnits()
         {
-            return View(new Models.DrugUnitWithDepot.DrugUnitsViewModel(_drugUnitService.getAll()));
+            var data = _drugUnitService.getAll();
+            var model = new Models.DrugUnitWithDepot.DrugUnitsViewModel(data);
+            return View(model);
         }
         [HttpGet]
         public ActionResult DrugUnitDepot()
         {
-            return View(
-                Helpers.DrugUnitWithDepotHelperMethods.DrugUnitDepotToListItem(
-                    _drugUnitDepotService.DrugUnitWithDepot(),
-                    (List<Depot>)_depotService.GetAll()
-                )
-            );
+            var drugUnitWithDepot = _drugUnitDepotService.DrugUnitWithDepot();
+            var depots = (List<Depot>)_depotService.GetAll();
+            var model = Helpers.DrugUnitWithDepotHelperMethods.DrugUnitDepotToListItem(drugUnitWithDepot, depots);
+            return View(model);
         }
         
         [HttpPost]

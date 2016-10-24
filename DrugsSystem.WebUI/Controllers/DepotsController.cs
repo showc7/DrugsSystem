@@ -6,36 +6,33 @@ using System.Web.Mvc;
 
 using DrugsSystem.Data.Infrastructure;
 using DrugSystem.Service;
+using DrugsSystem.WebUI.Models.Depots;
 
 namespace DrugsSystem.WebUI.Controllers
 {
     public class DepotsController : Controller
     {
-        //private static DbFactory _dbfactory = new DbFactory();
-        private IDrugUnitService _drugUnitService;// = new DrugUnitService(_dbfactory);
+        private IDrugUnitService _drugUnitService;
         
         public DepotsController(IDrugUnitService drugUnitService)
         {
             _drugUnitService = drugUnitService;
         }
 
-        // GET: Depots
-        public ActionResult Index()
+        [HttpGet]
+        public ViewResult DrugUnitsList()
         {
-            return RedirectToAction("DrugUnitsList");
+            var drugUnits = _drugUnitService.getAll();
+            var model = new DrugUnitsListViewModel(drugUnits);
+            return View(model);
         }
 
         [HttpGet]
-        public ActionResult DrugUnitsList()
-        {
-            return View(new Models.Depots.DrugUnitsListViewModel(_drugUnitService.getAll()));
-        }
-
-        [HttpGet]
-        public ActionResult GetInfo(string id)
+        public PartialViewResult GetInfo(string id)
         {
             // id - DrugUnitID
-            return PartialView(_drugUnitService.GetAssociatedViewData(id));
+            var model = _drugUnitService.GetAssociatedViewData(id);
+            return PartialView(model);
         }
     }
 }

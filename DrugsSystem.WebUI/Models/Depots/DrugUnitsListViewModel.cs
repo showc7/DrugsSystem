@@ -11,7 +11,7 @@ namespace DrugsSystem.WebUI.Models.Depots
 {
     public class DrugUnitsListViewModel
     {
-        public List<SelectListItem> DrugUnits { get; set; }
+        public IList<SelectListItem> DrugUnits { get; set; }
         public DrugUnitsListViewModel(IEnumerable<DrugUnit> drugUnits)
         {
             DrugUnits = new List<SelectListItem>();

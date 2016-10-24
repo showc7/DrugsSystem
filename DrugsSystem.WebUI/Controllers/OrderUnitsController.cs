@@ -11,51 +11,35 @@ namespace DrugsSystem.WebUI.Controllers
 {
     public class OrderUnitsController : Controller
     {
-        //private static DbFactory _dbfactory = new DbFactory();
-        private IDepotService _depotService;// = new DepotService(_dbfactory);
+        private IDepotService _depotService;
 
         public OrderUnitsController(IDepotService depotService)
         {
             _depotService = depotService;
         }
 
-        // GET: OrderUnits
-        public ActionResult Index()
-        {
-            return RedirectToAction("List");
-        }
-
         // depots list -> types list -> count for type -> count
-
         [HttpGet]
         public ActionResult List()
         {
-            return View(
-                Helpers.OrdersHelper.ConvertDepotsToListViewModel(
-                    _depotService.GetAll()
-                )
-            );
+            var data = _depotService.GetAll();
+            var model = Helpers.OrdersHelper.ConvertDepotsToListViewModel(data);
+            return View(model);
         }
         [HttpGet]
         public ActionResult GetDrugTypes(string id)
         {
-            return PartialView(
-                Helpers.OrdersHelper.ConvertToSelectList(
-                    _depotService.GetAssociatedDrugTypes(int.Parse(id)),
-                    int.Parse(id)
-                )
-            );
+            var idInt = int.Parse(id);
+            var associatedDrugTypes = _depotService.GetAssociatedDrugTypes(idInt);
+            var model = Helpers.OrdersHelper.ConvertToSelectList(associatedDrugTypes,idInt);
+            return PartialView(model);
         }
         [HttpPost]
         public ActionResult Calculate(Models.OrderUnits.DrugTypesViewModel model)
         {
-            return PartialView(
-                "OrderResult",
-                Helpers.OrdersHelper.CalculateOrder(
-                    model,
-                    _depotService
-                )
-            );
+            var viewName = "OrderResult";
+            var viewModel = Helpers.OrdersHelper.CalculateOrder(model, _depotService);
+            return PartialView(viewName, viewModel);
         }
     }
 }
