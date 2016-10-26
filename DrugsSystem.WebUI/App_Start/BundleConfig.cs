@@ -20,13 +20,22 @@ namespace DrugsSystem.WebUI
             //bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
             //            "~/Scripts/modernizr-*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/jqueryGrid").Include(
+                      "~/Scripts/i18n/grid.locale-ru.js").Include(
+                      "~/Scripts/jquery.jqGrid.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/handlebars").Include(
+                      "~/Scripts/handlebars.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/content/jquery.jqGrid/ui.jqgrid.css",
+                      "~/content/themes/base/jquery-ui.css"));
         }
     }
 }

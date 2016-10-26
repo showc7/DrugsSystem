@@ -93,5 +93,11 @@ namespace DrugSystem.Service
         {
             return _depotRepository.GetById(id);
         }
+
+        public void UpdateEntity(Depot depot)
+        {
+            _depotRepository.Update(depot);
+            _unitOfWork.Commit();
+        }
     }
 }

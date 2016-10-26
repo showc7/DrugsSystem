@@ -1,0 +1,11 @@
+{
+  "page": "1",
+  "total": "32",
+  "records": "622",
+  "rows":
+  [
+    { "id": "457", "cell": { "id": "457", "selectedIndex": "0", "values": ["value0", "value1", "value2"], "ids": [0, 1, 2], "pickNumber": "0", "DrugUnitID": 0 }},
+    { "id": "458", "cell": { "id": "458", "selectedIndex": "1", "values": ["value0", "value1", "value2"], "ids": [0, 1, 2], "pickNumber": "1", "DrugUnitID": 1 }},
+    { "id": "459", "cell": { "id": "459", "selectedIndex": "2", "values": ["value0", "value1", "value2"], "ids": [0, 1, 2], "pickNumber": "2", "DrugUnitID": 2 }}
+  ]
+}

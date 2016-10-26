@@ -57,5 +57,27 @@ namespace DrugSystem.Service
                 }
             }
         }
+
+        public void AssociateDrugUnitWithDepot(string drugUnitID, int depotID)
+        {
+            DrugUnit drugUnit = _drugUnitService.getByID(drugUnitID);
+            Depot depot = _depotService.GetById(depotID);
+            bool contains = depot.DrugUnits.Contains(drugUnit);
+            if (!contains)
+            {
+                depot.DrugUnits.Add(drugUnit);
+                _depotService.UpdateEntity(depot);
+            }
+        }
+
+        public List<DrugUnitDepot> DrugUnitWithDepot(int offset, int count)
+        {
+            return DrugUnitWithDepot().GetRange(offset, count);
+        }
+
+        public int GetDrugUnitsCount()
+        {
+            return DrugUnitWithDepot().Count;
+        }
     }
 }

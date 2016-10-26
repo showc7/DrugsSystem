@@ -46,5 +46,21 @@ namespace DrugsSystem.WebUI.Controllers
             _drugUnitDepotService.UpdateDrugUnitWithDepot(updateModels);
             return RedirectToAction("DrugUnitDepot");
         }
+
+        public JsonResult GetData(string search, string nd, string rows, string page, string sidx, string sord)
+        {
+
+            return Json(
+                new {
+                    total = 2,
+                    page = 1,
+                    records = 2,
+                    rows = new[ ]
+                        {
+                            new { id = 0, cell = new [] { "Alex", "Yashin" } },
+                            new { id = 1, cell = new [] { "Dimon", "Laschykovsky" } }
+                        }
+            }, JsonRequestBehavior.AllowGet);
+        }
     }
 }

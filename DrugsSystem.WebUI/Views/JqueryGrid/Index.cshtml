@@ -1,0 +1,106 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table id="jqSimple"></table>
+<div id="jqSimple_p"></div>
+
+
+@section scripts{
+    <script type="text/javascript">
+        $('document').ready(function () {
+            console.log('ready');
+            var pager = "#jqSimple_p";
+
+            var $grid = $("#jqSimple");
+            var $jqSimple = $grid;            $grid.jqGrid(
+                $.extend(
+                    {
+                        "datatype": "json",
+                        "mtype": "POST",
+                        "loadui": "block",
+                        "prmNames": { "id": "_id" },
+                        "colModel": [
+                            {
+                                "label": "ID",
+                                "replace": null,
+                                "formatter": null,
+                                "hidden": false,
+                                "editable": false,
+                                "search": true,
+                                "classes": "",
+                                "align": "center",
+                                "null": null,
+                                "encode": true,
+                                "width": "10",
+                                "name": "id",
+                                "index": "id"
+                            },
+                            {
+                                "label": "First name",
+                                "replace": null,
+                                "formatter": null,
+                                "hidden": false,
+                                "editable": true,
+                                "search": true,
+                                "classes": "",
+                                "align": "left",
+                                "null": null,
+                                "encode": true,
+                                "width": "35",
+                                "editrules": { "required": true },
+                                "name": "first_name",
+                                "index": "first_name"
+                            },
+                            {
+                                "label": "Last name",
+                                "replace": null,
+                                "formatter": null,
+                                "hidden": false,
+                                "editable": true,
+                                "search": true,
+                                "classes": "",
+                                "align": "left",
+                                "null": null,
+                                "encode": true,
+                                "width": "35",
+                                "editrules": { "required": true },
+                                "name": "last_name",
+                                "index": "last_name"
+                            },
+                            {
+                                "label": "Email", "replace": null, "formatter": null, "hidden": false, "editable": true, "search": true, "classes": "", "align": "left", "null": null, "encode": true, "width": "30", "editrules": { "email": true }, "name": "email", "index": "email"
+                            },
+                            {
+                                "label": "Phone", "replace": null, "formatter": null, "hidden": false, "editable": true, "search": true, "classes": "", "align": "center", "null": null, "encode": true, "width": "25", "name": "phone", "index": "phone"
+                            },
+                            {
+                                "label": "Discount", "replace": null, "formatter": "numeric", "hidden": false, "editable": false, "search": true, "classes": "", "align": "center", "null": null, "encode": true, "width": "15", "name": "discount", "index": "discount"
+                            }
+                        ],
+                        "pager": "#jqSimple_p",
+                        "cellurl": "@Url.Action("GetData")",
+                        "editurl": "@Url.Action("GetData")",
+                        "url": "@Url.Action("GetData")"
+                    },
+                    typeof (opts) == "undefined" ? {} : opts)
+            );
+            $grid.jqGrid('extBindEvents');
+            $grid.jqGrid(
+                'navGrid',
+                pager,
+                {
+                    "add": true,
+                    "edit": true,
+                    "del": true,
+                    "refresh": true,
+                    "search": false,
+                    "view": false
+                }, null, null, null, null, null);
+            $grid.jqGrid('filterToolbar');
+        });
+    </script>
+}

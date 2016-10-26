@@ -16,5 +16,6 @@ namespace DrugSystem.Service
         List<DrugType> GetAssociatedDrugTypes(int id);
         Models.OrderResultDTO MakeOrder(Models.OrderDTO order);
         Depot GetById(int? id);
+        void UpdateEntity(Depot depot);
     }
 }

@@ -20,5 +20,15 @@ namespace DrugsSystem.Models
         {
             return string.Format("{0}", DepotName);
         }
+
+        public override bool Equals(object obj)
+        {
+            if((obj as Depot) == null)
+            {
+                return false;
+            }
+
+            return (obj as Depot).DepotID == DepotID;
+        }
     }
 }

@@ -12,5 +12,8 @@ namespace DrugSystem.Service
     {
         List<DrugUnitDepot> DrugUnitWithDepot();
         void UpdateDrugUnitWithDepot(List<DrugUnitDepotUpdateServiceModel> updateModels);
+        List<DrugUnitDepot> DrugUnitWithDepot(int offset, int count);
+        int GetDrugUnitsCount();
+        void AssociateDrugUnitWithDepot(string drugUnitID, int depotID);
     }
 }

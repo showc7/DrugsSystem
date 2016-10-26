@@ -81,7 +81,10 @@ namespace DrugsSystem.Data.Infrastructure
 
         void IUnitOfWork.Commit()
         {
-            throw new NotImplementedException();
+            ExceptionExtensions.Handler(() =>
+            {
+                DbContext.Commit();
+            });
         }
     }
 }

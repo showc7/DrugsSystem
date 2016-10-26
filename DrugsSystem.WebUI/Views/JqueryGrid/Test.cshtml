@@ -1,0 +1,165 @@
+﻿
+@{
+    ViewBag.Title = "Test";
+}
+
+<h2>Test</h2>
+
+<table id="jqSimple"></table>
+<div id="jqSimple_p"></div>
+
+
+@section scripts{
+    <script type="text/javascript">
+        $('document').ready(function () {
+            console.log('ready');
+
+            var pager = "#jqSimple_p";
+
+            var $grid = $("#jqSimple");
+            var $jqSimple = $grid;
+
+            $grid.jqGrid({
+                autowidth: true,
+                autoheight: true,
+                url: '@Url.Action("GetData2")',
+                mtype: 'GET',
+                styleUI: 'Bootstrap',
+                colNames: ['ID', 'PickNumber', 'Depot'],
+                colModel: [{
+                    name: 'ID',
+                    index: 'id',
+                    hidden: true
+                },
+                {
+                    name: 'pickNumber',
+                    index: 'pickNumber',
+                    hidden: false,
+                    align: 'center',
+                    width: 30,
+                    formatter: pickNumberFormatter,
+                    unformat: function (cellvalue, options, rowObject) {
+                        console.log('UNFORMAT');
+                    }
+                },
+                {
+                    name: 'depot',
+                    index: 'depot',
+                    width: 30,
+                    sortable: true,
+                    align: 'center',
+                    editable: true,
+                    cellEdit: true,
+                    formatter: listFormatter,
+                    unformat: function (cellvalue, options, rowObject) {
+                        console.log('UNFORMAT');
+                    }
+                }
+                ],
+                rowNum: 10,
+                sortname: 'name',
+                viewrecords: true,
+                gridview: true,
+                pager: '#jqSimple_p',
+                sortorder: 'desc',
+                caption: 'Setup',
+                datatype: 'json',
+                gridComplete: function () {
+                    //handle();
+                    console.log('completed');
+                },
+                loadComplete: function () {
+                    handle();
+                    console.log('load complete');
+                }
+            });
+            //$grid.jqGrid('extBindEvents');
+            //$grid.jqGrid('navGrid', pager, { "refresh": true, "search": false, "view": false }, null, null, null, null, null);
+            $grid.jqGrid('navGrid', pager, { "add": true, "edit": true, "del": true, "refresh": true, "search": false, "view": false }, null, null, null, null, null);
+            //$grid.jqGrid('filterToolbar');
+            $grid.bind("jqGridAfterGridComplete", function () {
+                // the event handler will be executed AFTER gridComplete
+                //handle();
+                console.log('after complete');
+            });
+
+            let source = $('#handlbarsTemplate').html();
+            let template = Handlebars.compile(source);
+
+            function generateViewModel(data) {
+                //console.log(data);
+                let result = { values : []};
+                result.selectedIndex = data.selectedIndex;
+                result.id = data.id;
+                result.DrugUnitID = data.DrugUnitID;
+                for (let i = 0; i < data.values.length; i++) {
+                    result.values.push({
+                        name: data.values[i],
+                        selected: i == data.selectedIndex,
+                        id: data.ids[i]
+                    });
+                }
+                console.log(result);
+                return result;
+            }
+
+            function listFormatter(cellvalue, options, rowObject) {
+                viewModel = generateViewModel(rowObject);
+                return template(viewModel);
+            }
+
+            function pickNumberFormatter(cellvalue, options, rowObject) {
+                console.log('pickNumberFormatter');
+                console.log(cellvalue);
+                console.log(rowObject);
+                return rowObject.pickNumber;
+            }
+            function handle() {
+                $('select.data-select').click(() => {
+                    // ...
+                });
+                $('select.data-select').change(() => {
+                    // ...
+                });
+            }
+            window.handler = (object, DrugUnitID) => {
+                console.log('selection changed');
+                console.log($(object).children("option:selected").text());
+                console.log($(object).val());
+                console.log(DrugUnitID);
+                let depotID = $(object).val();
+                console.log('make ajax.post request to server');
+                console.log({ drugUnitID: DrugUnitID, depotID: depotID });
+                // post changes to server
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("GetData2")",
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify({ drugUnitID: DrugUnitID, depotID: depotID }),
+                    // why not working
+                    success: function (data) {
+                        console.log('OK');
+                        //alert(data);
+                    },
+                    failure: function (errMsg) {
+                        console.log('fail');
+                        //alert(errMsg);
+                    }
+                });
+            }
+        });
+    </script>
+
+    <script type="text/x-handlears-template" id="handlbarsTemplate">
+        <select class="form-control data-select" onchange="handler(this,'{{DrugUnitID}}')">
+            {{#each values}}
+                {{#if selected}}
+                    <option value="{{id}}" selected="selected">{{name}}</option>
+                {{else}}
+                    <option value="{{id}}" >{{name}}</option>
+                {{/if}}
+            {{/each}}
+        </select>
+</script>
+}

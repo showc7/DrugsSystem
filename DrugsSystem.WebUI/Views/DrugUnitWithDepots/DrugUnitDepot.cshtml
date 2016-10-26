@@ -41,3 +41,60 @@
             @Html.HiddenFor(model => Model.Depots[j].Value)
         }
 }
+
+@*
+    /*
+     * 
+     *
+     */   
+*@
+
+@section scripts{
+    <script type="text/javascript">
+
+            $('document').ready(function () {
+                console.log('ready');
+                $("#grid").jqGrid({
+                    url: '@Url.Action("GetData")',
+                    dataType: 'json',
+                    mtype: 'Get',
+                    colNames: ['id', 'cell'],
+                    colModel: [
+                        { key: true, index: 'name', label: 'name', name: 'name', width: 200, editable: false },
+                        { key: false, index: 'surname', label: 'surname', name: 'surname', width: 200, editable: false }
+                    ],
+                    pager: { enable: true, limit: 5, sizes: [2, 5, 10, 20] },
+                    width: 750,
+                    rowNum: 10,
+                    rowList: [10, 20, 30, 40],
+                    height: '100%',
+                    viewrecords: true,
+                    caption: 'list',
+                    emptyrecords: 'no records to display'/*,
+                    jsonReader: {
+                        total: 'total',
+                        page: 'page',
+                        records: 'records',
+                        root: 'rows',
+                        cell: 'cell',
+                        id: 'id'
+                    }*/
+                    /*,
+                    
+                    columnsresize: true,
+                    uiLibrary: "bootstrap",
+                    initeditor: function (row, cellvalue, editor, celltext, cellwidth, cellheight) {
+                        console.log('dropdown editor init');
+                        editor.jqxDropDownList({
+                            focus: function () {
+                                console.log('get focus');
+                            },
+                            source: dataAdapter.records[row].locations
+                        });
+                    }
+                    */
+                });
+            });
+
+    </script>
+}
