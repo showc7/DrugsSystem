@@ -8,6 +8,7 @@ using System.IO;
 using DrugSystem.Service;
 using DrugsSystem.Models;
 using DrugSystem.Service.Models;
+using DrugsSystem.WebUI.Models.JqueryGrid;
 
 namespace DrugsSystem.WebUI.Controllers
 {
@@ -56,7 +57,7 @@ namespace DrugsSystem.WebUI.Controllers
 
             var drugUnitWithDepot = _drugUnitDepotService.DrugUnitWithDepot(offset, pageRecordsCount);
             var depots = (List<Depot>) _depotService.GetAll();
-            var model = Helper.DrugUnitDepotToModel(drugUnitWithDepot, depots, pageNumber, totalPagesCount, totalDrugUnits);
+            var model = Helpers.JqueryGridHelper.DrugUnitDepotToModel(drugUnitWithDepot, depots, pageNumber, totalPagesCount, totalDrugUnits);
             return Json(model, JsonRequestBehavior.AllowGet);
             /*
             var filePath = "d:/projects/git/DrugsSystem/jsondata2.json";
@@ -72,84 +73,6 @@ namespace DrugsSystem.WebUI.Controllers
             //return Content("OK");
             _drugUnitDepotService.AssociateDrugUnitWithDepot(obj.drugUnitID,int.Parse(obj.depotID));
             return new HttpStatusCodeResult(System.Net.HttpStatusCode.OK);
-        }
-    }
-
-    public class AjaxResponceDataObject
-    {
-        public string drugUnitID { get; set; }
-        public string depotID { get; set; }
-    }
-
-    public class DrugUnitDepotJsonModel
-    {
-        public class JsonRow
-        {
-            public class Cell
-            {
-                public string id { get; set; }
-                public int selectedIndex { get; set; }
-                public string[] values { get; set; }
-                public int[] ids { get; set; }
-                public int pickNumber { get; set; }
-                public string DrugUnitID { get; set; }
-
-                public Cell(string id, int selectedIndex, int pickNumber, string drugUnitID)
-                {
-                    this.id = id;
-                    this.selectedIndex = selectedIndex;
-                    this.pickNumber = pickNumber;
-                    this.DrugUnitID = drugUnitID;
-                }
-            }
-
-            public string id { get; set; }
-            public Cell cell { get; set; }
-
-            public JsonRow(string id)
-            {
-                this.id = id;
-            }
-        }
-
-        public int page { get; set; }
-        public int total { get; set; }
-        public int records { get; set; }
-        public JsonRow[] rows { get; set; }
-
-        public DrugUnitDepotJsonModel(int page, int total, int records)
-        {
-            this.page = page;
-            this.total = total;
-            this.records = records;
-        }
-    }
-
-    public static class Helper
-    {
-        public static DrugUnitDepotJsonModel DrugUnitDepotToModel(List<DrugUnitDepot> drugUnitWithDepot, List<Depot> depots, int page, int total, int records)
-        {
-            DrugUnitDepotJsonModel result = new DrugUnitDepotJsonModel(page, total, records)
-            {
-                rows = new DrugUnitDepotJsonModel.JsonRow[drugUnitWithDepot.Count]
-            };
-            
-            for(int i = 0; i < drugUnitWithDepot.Count; i++ )
-            {
-                var dud = drugUnitWithDepot[i];
-                int selectedIndex = depots.IndexOf(dud.Depot);
-                result.rows[i] = new DrugUnitDepotJsonModel.JsonRow(dud.DrugUnit.DrugUnitID);
-                result.rows[i].cell = new DrugUnitDepotJsonModel.JsonRow.Cell(
-                        dud.DrugUnit.DrugUnitID,
-                        selectedIndex,
-                        dud.DrugUnit.PickNumber,
-                        dud.DrugUnit.DrugUnitID
-                    );
-                result.rows[i].cell.values = depots.Select(d => d.DepotName).ToArray();
-                result.rows[i].cell.ids = depots.Select(d => d.DepotID).ToArray();
-            }
-
-            return result;
         }
     }
 }
